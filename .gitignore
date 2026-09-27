@@ -1,0 +1,14 @@
+# 系统垃圾文件
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+
+# 本地开发产物
+*.log
+node_modules/
+__pycache__/

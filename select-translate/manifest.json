@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "划词翻译",
+  "version": "1.2.2",
+  "description": "划词翻译 + 一键全文/对照翻译:Google 双端点,失败自动切 MyMemory;表单、密码框、代码块不翻译,排版贴近原版。",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": ["storage", "contextMenus"],
+  "host_permissions": [
+    "https://translate.googleapis.com/*",
+    "https://clients5.google.com/*",
+    "https://api.mymemory.translated.net/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "划词翻译",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "commands": {
+    "translate-selection": {
+      "suggested_key": { "default": "Alt+T" },
+      "description": "翻译当前选中的文字"
+    },
+    "translate-page": {
+      "suggested_key": { "default": "Alt+P" },
+      "description": "全文翻译 / 还原本页"
+    }
+  }
+}

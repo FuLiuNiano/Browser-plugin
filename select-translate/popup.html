@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <h1>划词翻译 <span id="ver" class="meta"></span></h1>
+
+  <section class="modes" id="modes">
+    <button class="mode" data-mode="selection"><b>🔍 划词</b><small>选中出译文</small></button>
+    <button class="mode" data-mode="page"><b>🌐 全文</b><small>替换原文</small></button>
+    <button class="mode" data-mode="bilingual"><b>📑 对照</b><small>保留原文</small></button>
+  </section>
+
+  <section class="card" id="pageCard">
+    <div class="row">
+      <button id="pageGo" class="primary">翻译本页</button>
+      <button id="pageRestore">还原</button>
+    </div>
+    <div id="pageStatus" class="meta"></div>
+  </section>
+
+  <details class="card">
+    <summary>手动翻译</summary>
+    <textarea id="input" rows="3" placeholder="输入要翻译的文字…(Ctrl+Enter 直接翻译)"></textarea>
+    <div class="row">
+      <button id="go" class="primary">翻译</button>
+      <button id="copy" disabled>复制</button>
+      <span id="meta" class="meta"></span>
+    </div>
+    <div id="result" class="result"></div>
+  </details>
+
+  <details class="card">
+    <summary>设置</summary>
+    <label class="line"><input type="checkbox" id="enabled"> 启用插件</label>
+    <label class="line"><input type="checkbox" id="auto"> 自动翻译(打开页面即翻,全文/对照模式)</label>
+    <div class="line">划词触发:
+      <select id="trigger">
+        <option value="button">选中后点按钮</option>
+        <option value="auto">选中即译</option>
+      </select>
+    </div>
+    <div class="line">翻译引擎:
+      <select id="engine">
+        <option value="auto">自动(Google 失败切备用)</option>
+        <option value="google">仅 Google</option>
+        <option value="mymemory">仅 MyMemory</option>
+      </select>
+    </div>
+    <div class="line">目标语言: <select id="target"></select></div>
+    <div class="line">
+      <button id="exCur">排除当前站点</button>
+      <span id="hint" class="hint"></span>
+    </div>
+    <ul id="exList" class="exlist"></ul>
+  </details>
+
+  <script src="popup.js" defer></script>
+</body>
+</html>

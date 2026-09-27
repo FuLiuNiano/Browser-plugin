@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>本地 Cookie 编辑器</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="site">
+      <span class="logo">🍪</span>
+      <span id="site-host" class="host">…</span>
+    </div>
+    <div class="perm">
+      <span id="perm-status" class="chip warn">…</span>
+      <button id="btn-revoke" class="linkbtn hidden" title="撤销本站的 Cookie 访问权限">移除本站权限</button>
+    </div>
+  </header>
+
+  <div id="notice" class="notice hidden"></div>
+
+  <section id="perm-ask" class="perm-ask hidden">
+    <p>还没有该站点的 Cookie 访问权限。</p>
+    <p class="hint">授权范围仅限 <b id="perm-scope"></b> 及其子域名。权限可在本弹窗或扩展详情页随时撤销；点击按钮后浏览器还会再向你确认一次。</p>
+    <button id="btn-grant" class="btn primary wide">授权本站访问</button>
+  </section>
+
+  <div id="manage" class="hidden">
+    <section id="toolbar">
+      <input id="search" type="search" placeholder="按名称 / 值过滤…" spellcheck="false">
+      <button id="btn-eye" class="btn ghost" title="显示 / 隐藏值">👁</button>
+      <button id="btn-refresh" class="btn ghost" title="重新读取">↻</button>
+    </section>
+
+    <main>
+      <ul id="cookie-list"></ul>
+      <p id="empty" class="empty hidden">该站点没有 Cookie。</p>
+    </main>
+
+    <footer>
+      <div class="frow">
+        <span id="count" class="count">0 条</span>
+        <button id="btn-delall" class="btn danger">删除全部</button>
+      </div>
+      <div class="frow">
+        <button id="btn-copy" class="btn">复制 JSON</button>
+        <button id="btn-file" class="btn">导出文件</button>
+        <button id="btn-import" class="btn">导入</button>
+      </div>
+    </footer>
+  </div>
+
+  <div id="dialog" class="dialog hidden">
+    <div class="card">
+      <h3>导入 JSON</h3>
+      <textarea id="import-text" placeholder='粘贴单个对象或数组，例如：[{"name":"a","value":"b","domain":".example.com","path":"/","secure":true}]' spellcheck="false"></textarea>
+      <div class="dialog-actions">
+        <button id="btn-import-add" class="btn primary">合并导入</button>
+        <button id="btn-import-replace" class="btn danger">清空后导入</button>
+        <button id="btn-dialog-close" class="btn ghost">取消</button>
+      </div>
+      <p class="hint">与 Cookie-Editor 的导出格式互相兼容。只能写入你已授权的域名；“清空后导入”会先删除本站全部 Cookie。</p>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
