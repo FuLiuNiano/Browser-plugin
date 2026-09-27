@@ -6,7 +6,7 @@
 
 1. 打开 `edge://extensions`(如已装 v1,点扩展卡片上的「重新加载」即可升级)
 2. 左下角开启「开发人员模式」
-3. 点「加载解压缩的扩展」,选择本目录 `D:\codex\select-translate`
+3. 点「加载解压缩的扩展」,选择解压出来的 `select-translate` 目录
 4. 建议点工具栏拼图图标,把「划词翻译」固定到工具栏
 
 Chrome 同理:`chrome://extensions` → 开发者模式 → 加载已解压的扩展程序。
